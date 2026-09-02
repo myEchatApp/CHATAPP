@@ -1,0 +1,17 @@
+:root{--bg:#0a0e1a;--card:rgba(255,255,255,0.05);--accent:#3b82f6;--text:#e5e7eb;--radius:18px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+body{background:var(--bg);color:var(--text);padding:16px}
+.container{max-width:600px;margin:auto}
+.glass{background:var(--card);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);padding:18px;margin-bottom:16px}
+input,textarea,button{width:100%;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2);color:var(--text);margin-top:8px;font-size:15px}
+button{background:var(--accent);font-weight:600;cursor:pointer;border:none}
+.btn-small{padding:6px 10px;font-size:13px;width:auto}
+button:hover{opacity:0.9} button:active{transform:scale(0.97)}
+.avatar{width:50px;height:50px;border-radius:50%;object-fit:cover;background:#222}
+.post,.msg{padding:12px;border-radius:14px;background:rgba(0,0,0,0.2);margin-top:10px;word-break:break-word}
+.hidden{display:none}
+#chatBox,#feed{height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.msg.me{align-self:flex-end;background:var(--accent);color:#fff}
+.admin-item,.user-item{display:flex;justify-content:space-between;align-items:center;margin:8px 0}
+.comment{font-size:13px;padding:6px 10px;background:rgba(255,255,255,0.05);border-radius:10px;margin-top:6px}
+@media(max-width:600px){.container{padding:8px}}

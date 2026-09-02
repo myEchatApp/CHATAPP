@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echat App</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> 
+</head><body>
+</head><body>
+<div class="container">
+  <div class="glass">
+    <img id="avatar" class="avatar" src="https://i.imgur.com/8Km9tLL.png">
+    <input type="file" id="avatarUpload" accept="image/*">
+    <textarea id="bio" placeholder="Write your bio..."></textarea>
+    <button onclick="saveProfile()">Save Profile</button>
+  </div>
+  <div class="glass">
+    <h3>People</h3><div id="peopleList"></div>
+  </div>
+  <div class="glass">
+    <h3>Feed</h3>
+    <textarea id="postText" placeholder="What's on your mind?"></textarea>
+    <input type="file" id="postImg" accept="image/*">
+    <button onclick="createPost()">Post</button>
+    <div id="feed"></div>
+  </div>
+  <div class="glass">
+    <h3>Global Chat</h3>
+    <div id="chatBox"></div>
+    <input id="msgInput" placeholder="Type a message">
+    <input type="file" id="msgFile">
+    <button onclick="sendMsg()">Send</button>
+    <button onmousedown="startVoice()" onmouseup="stopVoice()">🎤 Hold to Record</button>
+  </div>
+  <div id="adminPanel" class="glass hidden">
+    <h3>Admin Control Panel</h3>
+    <h4>Users</h4><div id="adminUsers"></div>
+    <h4>Posts</h4><div id="adminPosts"></div>
+    <h4>Messages</h4><div id="adminMsgs"></div>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body></html>

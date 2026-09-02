@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echat - Login</title><link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head><body>
+<div class="container">
+  <div class="glass">
+    <h2>Echat</h2><p>Connect with everyone</p>
+    <input id="email" type="email" placeholder="Enter Gmail">
+    <button onclick="sendCode()">Get Verification Code</button>
+    <div id="verifyBox" class="hidden">
+      <input id="code" placeholder="6 Digit Code">
+      <input id="pass" type="password" placeholder="Set Password">
+      <button onclick="signup()">Create Account</button>
+    </div>
+    <hr style="opacity:0.1;margin:16px 0">
+    <input id="loginEmail" type="email" placeholder="Email">
+    <input id="loginPass" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <button onclick="adminBox.classList.toggle('hidden')">Admin Panel</button>
+    <div id="adminBox" class="hidden">
+      <input id="adminUser" placeholder="Admin Username">
+      <input id="adminPass" type="password" placeholder="Admin Password">
+      <button onclick="adminLogin()">Admin Login</button>
+    </div>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body></html>
