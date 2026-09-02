@@ -1,5 +1,5 @@
 // ====== CONFIG SPACE - PASTE YOUR RENDER URL HERE ======
-const API = "https://echating-3.onrender.com";
+const API = "https://chatappp-so7r.onrender.com";
 const EMAILJS_PUBLIC_KEY ="6vVk9Mkld2FxNK2F6";
 const EMAILJS_SERVICE_ID = "service_bnml7gq";
 const EMAILJS_TEMPLATE_ID = "template_4t07p1d";
