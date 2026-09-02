@@ -1,7 +1,17 @@
 {
-  "name": "echat-app",
-  "version": "2.0.0",
+  "name": "chatappp-so7r",
+  "version": "1.0.0",
+  "description": "Chat App",
   "main": "server.js",
-  "scripts": { "start": "node server.js" },
-  "dependencies": { "express": "^4.18.2", "socket.io": "^4.7.2", "cors": "^2.8.5" }
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "engines": {
+    "node": "18.x"
+  }
 }
