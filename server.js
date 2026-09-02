@@ -10,22 +10,24 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
 app.use(cors());
-app.use(express.json({limit: '10mb'})); // for images/base64
+app.use(express.json({limit: '50mb'}));
 app.use(express.static(__dirname));
 
 const DB_FILE = path.join(__dirname, 'db.json');
 
-// Helper to read/write db
+// AUTO CREATE DB IF MISSING - THIS IS THE KEY FIX
+if (!fs.existsSync(DB_FILE)) {
+  fs.writeFileSync(DB_FILE, JSON.stringify({users:[],posts:[],messages:[],friends:[]}));
+}
+
 const readDB = () => JSON.parse(fs.readFileSync(DB_FILE));
 const writeDB = (data) => fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2));
 
-// Routes
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/app.html', (req, res) => res.sendFile(path.join(__dirname, 'app.html')));
 
-// Socket.io Logic
 io.on('connection', (socket) => {
-  console.log('User connected');
+  console.log('User connected'); // <-- You should see this in Render Logs
   const db = readDB();
   socket.emit('initData', db);
 
@@ -35,6 +37,29 @@ io.on('connection', (socket) => {
     const newUser = {id: Date.now(), email, pass, bio: '', avatar: '', friends: [], isAdmin: false};
     db.users.push(newUser);
     writeDB(db);
+    socket.emit('registerSuccess');
+    io.emit('usersUpdate', db.users);
+  });
+
+  socket.on('login', ({email, pass}) => {
+    const db = readDB();
+    const user = db.users.find(u => u.email === email && u.pass === pass);
+    if(user) socket.emit('loginSuccess', user);
+    else socket.emit('error', 'Invalid credentials');
+  });
+
+  socket.on('newMessage', (msg) => {
+    const db = readDB();
+    msg.id = Date.now();
+    db.messages.push(msg);
+    writeDB(db);
+    io.emit('message', msg);
+  });
+  // ... keep the rest: newPost, likePost, commentPost, updateProfile, adminLogin
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => console.log(`Server running on ${PORT}`));    writeDB(db);
     socket.emit('registerSuccess');
   });
 
